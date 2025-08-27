@@ -29,14 +29,16 @@
   <main class="container">
     <section class="hero" id="home">
       <div>
-        <h1>Hi, I’m <span style="color: var(--accent);">Brianna</span> —
-          building clean, creative, and user‑friendly projects.</h1>
+        <h1>About <span style="color: var(--accent);">Brianna</span> —
+          The Information Technology student from Mapúa University.</h1>
         <p>
-          I’m currently working on my GitHub webpage and expanding my portfolio. Below are a few featured projects.
-          Feel free to reach out if you’d like to chat!
+        Passionate about building user-friendly designs and continuously improving my technical 
+        skills in both front-end and back-end, aiming to be a full-stack developer.
         </p>
         <div class="cta">
-          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn primary" href="RESUME.pdf" target="_blank" rel="noopener">
+        📄 View My Resume
+        </a>
           <a class="btn ghost" href="#contact">Contact Me</a>
         </div>
       </div>
@@ -47,52 +49,32 @@
     </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <h2 class="section-title">Featured Projects</h2>
-      <p class="muted">Each card links to a live demo (if available) and the GitHub repository.</p>
-
-      <div class="grid projects">
-        <!-- Project Card 1 -->
-        <article class="card">
-          <div class="tag">JavaScript · C++</div>
-          <h3>Snake Game</h3>
-          <p>Classic Retro Snake Game written in C++, compiled to WebAssembly, and playable in the browser via Emscripten. Move with arrow keys, eat, and avoid collisions!</p>
-          <div class="actions">
-            <a class="btn" href="https://briannaagbunag.github.io/snake-game/index.html" target="_blank" rel="noopener">Demo</a>
-            <a class="btn" href="https://github.com/briannaagbunag/snake-game.git" target="_blank" rel="noopener">Source</a>
-          </div>
-        </article>
-
-        <!-- Project Card 2 -->
-        <article class="card">
-          <div class="tag">Vite</div>
-          <h3>LiftingCast Stream Overlay</h3>
-          <p>Overlay for lifter data in the SBD Philippine Weightlifting Nationals 2025 for live stream, displaying real-time athlete information</p>
-          <div class="actions">
-            <a class="btn" href="https://www.youtube.com/watch?v=ITkoxXGduVc" target="_blank" rel="noopener">Demo</a>
-            <a class="btn" href="https://github.com/Jerzzy16/liftingcast-overlays_EQUINOX.git" target="_blank" rel="noopener">Source (Private)</a>
-          </div>
-        </article>
-        
-      </div>
+    <!-- Coursera Certificates -->
+    <section id="certificates">
+    <h2 class="section-title">Courseras</h2>
+    <div class="grid certificates" id="cert-list"></div>
     </section>
 
-    <!-- About -->
-    <section id="about">
-    <h2 class="section-title">About</h2>
-    <div class="about">
-        <p><strong>
-        I’m Brianna Sarah Alexis Agbunag, an Information Technology student at Mapúa University with
-        hands-on experience in front-end development, UI/UX design, and API integration. 
-        I’m passionate about building user-friendly designs and continuously improving my technical 
-        skills in both front-end and back-end, aiming to be a full-stack developer.
-        </strong></p>
-        <a class="btn primary" href="RESUME.pdf" target="_blank" rel="noopener">
-        📄 View My Resume
-        </a>
-    </div>
-    </section>
+    <script>
+      fetch("certs/certs.json")
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById("cert-list");
+          data.forEach(cert => {
+            const card = document.createElement("article");
+            card.className = "cert-card";
+            card.innerHTML = `
+              <div class="tag">${cert.platform}</div>
+              <h3>${cert.title}</h3>
+              ${cert.note ? `<p>${cert.note}</p>` : ""}
+              <div class="actions">
+                <a class="btn" href="${cert.file}" target="_blank" rel="noopener">View</a>
+              </div>
+            `;
+            container.appendChild(card);
+          });
+        });
+    </script>
 
     <!-- Contact -->
     <section id="contact">

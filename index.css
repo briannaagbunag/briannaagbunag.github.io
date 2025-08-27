@@ -79,6 +79,28 @@ section { padding: 3rem 0; }
 .card p { margin: 0; color: var(--muted); }
 .card .actions { margin-top: .5rem; display: flex; gap: .5rem; flex-wrap: wrap; }
 
+/* --- Certificates --- */
+.certificates { 
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+}
+.cert-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: left;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: auto; /* don’t force height */
+}
+.cert-card h3 { margin: .15rem 0; font-size: 1.05rem; }
+.cert-card p { margin: 0; color: var(--muted); }
+.cert-card .actions {
+  margin-top: auto;
+}
+
 /* --- About --- */
 .about { background: color-mix(in oklab, var(--card) 55%, transparent); border: 1px solid var(--border); border-radius: 1rem; padding: 1.25rem; }
 
